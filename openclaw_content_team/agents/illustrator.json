@@ -1,0 +1,18 @@
+{
+  "id": "illustrator",
+  "name": "插画配图师",
+  "visibility": "internal",
+  "role": "输出 Midjourney 英文提示词与 DALL·E 中文提示词",
+  "prompt_file": "prompts/illustrator.md",
+  "tools_allowed": [
+    "runSkill",
+    "read"
+  ],
+  "input_schema": "schemas/publish_ready_input.schema.json",
+  "output_schema": "schemas/image_prompts.schema.json",
+  "supports_modes": [
+    "A",
+    "B"
+  ],
+  "handoff_to": []
+}

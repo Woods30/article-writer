@@ -1,0 +1,20 @@
+{
+  "id": "trend_insight_analyst",
+  "name": "趋势洞察师",
+  "visibility": "internal",
+  "role": "扫描热点、提炼可执行选题线索，输出选题素材报告",
+  "prompt_file": "prompts/trend_insight_analyst.md",
+  "tools_allowed": [
+    "googleSearch",
+    "fetch"
+  ],
+  "input_schema": "schemas/task_intake.schema.json",
+  "output_schema": "schemas/topic_material_report.schema.json",
+  "supports_modes": [
+    "B",
+    "C"
+  ],
+  "handoff_to": [
+    "topic_strategist"
+  ]
+}

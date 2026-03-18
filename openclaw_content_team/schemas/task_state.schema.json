@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TaskState",
+  "type": "object",
+  "required": [
+    "task_name",
+    "current_stage",
+    "assigned_agent",
+    "input_summary",
+    "waiting_for_output",
+    "human_intervention"
+  ],
+  "properties": {
+    "task_name": {
+      "type": "string"
+    },
+    "current_stage": {
+      "type": "string"
+    },
+    "assigned_agent": {
+      "type": "string"
+    },
+    "input_summary": {
+      "type": "string"
+    },
+    "waiting_for_output": {
+      "type": "string"
+    },
+    "estimated_effort_note": {
+      "type": "string"
+    },
+    "human_intervention": {
+      "type": "boolean"
+    }
+  }
+}

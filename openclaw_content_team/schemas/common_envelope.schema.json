@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CommonEnvelope",
+  "type": "object",
+  "required": [
+    "output",
+    "key_summary",
+    "next_agent_focus",
+    "pending_human_confirmations"
+  ],
+  "properties": {
+    "output": {
+      "description": "本次输出",
+      "type": "object"
+    },
+    "key_summary": {
+      "description": "关键摘要",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_agent_focus": {
+      "description": "建议关注点",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pending_human_confirmations": {
+      "description": "待确认项",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

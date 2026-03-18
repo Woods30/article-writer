@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PublishReadyInput",
+  "type": "object",
+  "required": [
+    "article_package",
+    "audit_report"
+  ],
+  "properties": {
+    "article_package": {
+      "type": "object"
+    },
+    "audit_report": {
+      "type": "object",
+      "properties": {
+        "decision": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

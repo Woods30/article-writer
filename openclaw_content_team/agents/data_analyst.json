@@ -1,0 +1,19 @@
+{
+  "id": "data_analyst",
+  "name": "数据分析师",
+  "visibility": "internal",
+  "role": "分析发布后指标，输出复盘报告与洞察备忘录",
+  "prompt_file": "prompts/data_analyst.md",
+  "tools_allowed": [
+    "read",
+    "searchApi"
+  ],
+  "input_schema": "schemas/performance_data_input.schema.json",
+  "output_schema": "schemas/retrospective_report.schema.json",
+  "supports_modes": [
+    "C"
+  ],
+  "handoff_to": [
+    "trend_insight_analyst"
+  ]
+}

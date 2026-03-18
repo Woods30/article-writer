@@ -1,0 +1,40 @@
+{
+  "id": "mode_d_platform_rewrite",
+  "name": "模式D-平台改写",
+  "description": "将公众号原文改写为小红书版本并经过审核。",
+  "entry_agent": "platform_adapter",
+  "steps": [
+    {
+      "step": 1,
+      "agent": "platform_adapter",
+      "input": "wechat_original_article",
+      "output": "xiaohongshu_note_markdown + short_300 + tags + titles",
+      "tools_allowed": [
+        "read",
+        "write",
+        "edit"
+      ]
+    },
+    {
+      "step": 2,
+      "agent": "quality_auditor",
+      "input": "platform_adaptation",
+      "output": "audit_report",
+      "tools_allowed": [
+        "read",
+        "googleSearch"
+      ],
+      "human_checkpoint": "publish_confirmation"
+    }
+  ],
+  "gates": {
+    "audit_pass_rule": "total_score >= 70 && hard_veto_items.length == 0",
+    "max_revision_rounds": 2,
+    "on_revision_exceed": "escalate_to_human"
+  },
+  "artifacts": [
+    "xiaohongshu_note_markdown",
+    "xiaohongshu_short_300",
+    "audit_report"
+  ]
+}
