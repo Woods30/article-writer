@@ -25,6 +25,18 @@ python3 -m pip install -r requirements-agno.txt
 > export OPENAI_API_KEY=你的key
 > ```
 
+### 云环境自动预装（Cursor Cloud Agent）
+
+仓库已新增：
+- `.cursor/environment.json`
+- `.cursor/install.sh`
+- `requirements-agno-providers-optional.txt`
+
+新机器启动时会自动执行：
+1. `pip install -r requirements-agno.txt`
+2. `pip install -r requirements-agno-providers-optional.txt`（当前包含 `openai`）
+3. `python3 -m agno_runtime --registry-root agno_registry validate`
+
 ### 2) 校验 registry
 
 ```bash
