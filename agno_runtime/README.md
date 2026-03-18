@@ -14,3 +14,13 @@
 1. 可扩展：新增 team/agent 不改代码，仅增量新增目录和文件。
 2. 可组合：可以运行整队（run-team）或单角色（run-agent）。
 3. 可迁移：同时兼容 OpenClaw 风格的 `AGENT.md` / `SOUL.md` / `skills` / `memory` 组织方式。
+
+## OpenAI Base URL 自定义
+
+支持三种方式设置（优先级从高到低）：
+
+1. CLI 参数：`--openai-base-url`
+2. 环境变量：`AGNO_OPENAI_BASE_URL`
+3. 环境变量：`OPENAI_BASE_URL`
+
+运行时会自动将最终值注入 `OPENAI_BASE_URL`（以及兼容别名 `OPENAI_API_BASE`）。

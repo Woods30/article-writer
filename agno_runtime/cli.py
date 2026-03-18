@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -27,6 +28,15 @@ def _build_parser() -> argparse.ArgumentParser:
         "--telemetry",
         action="store_true",
         help="开启 Agno telemetry（默认关闭）。",
+    )
+    parser.add_argument(
+        "--openai-base-url",
+        default=None,
+        help=(
+            "自定义 OpenAI Base URL。"
+            "可覆盖 OPENAI_BASE_URL / AGNO_OPENAI_BASE_URL，"
+            "例如 https://api.openai.com/v1 或代理网关地址。"
+        ),
     )
 
     sub = parser.add_subparsers(dest="command", required=True)
@@ -76,6 +86,7 @@ def _build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
+    _configure_openai_base_url(args.openai_base_url)
 
     registry_root = Path(args.registry_root).resolve()
     loader = RegistryLoader(registry_root)
@@ -218,6 +229,23 @@ def _extract_content(response: Any) -> str:
         return json.dumps(content, ensure_ascii=False, indent=2)
     except TypeError:
         return str(content)
+
+
+def _configure_openai_base_url(cli_value: str | None) -> None:
+    """
+    Configure OpenAI base URL precedence:
+    1) --openai-base-url
+    2) AGNO_OPENAI_BASE_URL
+    3) OPENAI_BASE_URL (already present)
+    """
+    base_url = cli_value or os.getenv("AGNO_OPENAI_BASE_URL") or os.getenv("OPENAI_BASE_URL")
+    if not base_url:
+        return
+
+    # openai python client commonly reads OPENAI_BASE_URL.
+    os.environ["OPENAI_BASE_URL"] = base_url
+    # Keep compatibility with some wrappers that still check OPENAI_API_BASE.
+    os.environ["OPENAI_API_BASE"] = base_url
 
 
 if __name__ == "__main__":

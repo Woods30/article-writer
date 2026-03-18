@@ -24,6 +24,14 @@ python3 -m pip install -r requirements-agno.txt
 > python3 -m pip install openai
 > export OPENAI_API_KEY=你的key
 > ```
+>
+> 如需自定义 OpenAI 网关（Base URL）：
+>
+> ```bash
+> export OPENAI_BASE_URL=https://your-openai-gateway/v1
+> # 或
+> export AGNO_OPENAI_BASE_URL=https://your-openai-gateway/v1
+> ```
 
 ### 云环境自动预装（Cursor Cloud Agent）
 
@@ -64,10 +72,19 @@ python3 -m agno_runtime --registry-root agno_registry --model openai:gpt-4o-mini
   run-team --team content-creation-team --input "帮我从选题开始创作一篇关于AI效率工具的双平台文章"
 ```
 
+也可以在命令中显式指定：
+
+```bash
+python3 -m agno_runtime --registry-root agno_registry --model openai:gpt-4o-mini \
+  --openai-base-url https://your-openai-gateway/v1 \
+  run-team --team content-creation-team --input "帮我从选题开始创作一篇关于AI效率工具的双平台文章"
+```
+
 ### 6) 按需执行单个 agent
 
 ```bash
 python3 -m agno_runtime --registry-root agno_registry --model openai:gpt-4o-mini \
+  --openai-base-url https://your-openai-gateway/v1 \
   run-agent --team content-creation-team --agent platform_adapter --input "把这篇公众号文章改写成小红书版本"
 ```
 
