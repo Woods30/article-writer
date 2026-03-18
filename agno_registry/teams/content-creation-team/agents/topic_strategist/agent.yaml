@@ -1,0 +1,13 @@
+id: topic_strategist
+name: 选题策略师
+role: strategist
+description: 将素材转换为 Creative Brief。
+instructions_file: AGENT.md
+soul_file: SOUL.md
+skills_dir: skills
+memory_dir: memory
+tools: ['read', 'write']
+model: null
+markdown: true
+metadata:
+  source: content-creation-team

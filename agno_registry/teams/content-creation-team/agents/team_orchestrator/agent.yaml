@@ -1,0 +1,13 @@
+id: team_orchestrator
+name: 团队协调者
+role: orchestrator
+description: 任务拆解、流程调度、状态追踪与人工节点控制。
+instructions_file: AGENT.md
+soul_file: SOUL.md
+skills_dir: skills
+memory_dir: memory
+tools: ['read', 'write', 'edit']
+model: null
+markdown: true
+metadata:
+  source: content-creation-team

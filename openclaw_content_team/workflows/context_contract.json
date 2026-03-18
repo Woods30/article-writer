@@ -1,0 +1,16 @@
+{
+  "id": "context_contract",
+  "description": "所有 Agent 输出都应遵循的上下文传递契约",
+  "required_sections": [
+    "output",
+    "key_summary",
+    "next_agent_focus",
+    "pending_human_confirmations"
+  ],
+  "section_semantics": {
+    "output": "本 Agent 完整产出",
+    "key_summary": "传递给下一个 Agent 的核心信息",
+    "next_agent_focus": "下一个 Agent 需要重点关注的事项",
+    "pending_human_confirmations": "需要人工确认的事项"
+  }
+}

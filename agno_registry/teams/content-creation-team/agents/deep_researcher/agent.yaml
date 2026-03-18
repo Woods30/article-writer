@@ -1,0 +1,13 @@
+id: deep_researcher
+name: 深度研究员
+role: researcher
+description: 产出 A-E 模块研究素材包并完成事实核验。
+instructions_file: AGENT.md
+soul_file: SOUL.md
+skills_dir: skills
+memory_dir: memory
+tools: ['googleSearch', 'fetch']
+model: null
+markdown: true
+metadata:
+  source: content-creation-team

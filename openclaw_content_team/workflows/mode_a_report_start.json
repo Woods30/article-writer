@@ -1,0 +1,88 @@
+{
+  "id": "mode_a_report_start",
+  "name": "模式A-从研究报告启动",
+  "description": "用户提供研究报告或原始素材，跳过趋势洞察，直接进行策略、研究、写作、适配、审核、配图。",
+  "entry_agent": "topic_strategist",
+  "steps": [
+    {
+      "step": 1,
+      "agent": "topic_strategist",
+      "input": "research_report",
+      "output": "creative_brief",
+      "tools_allowed": [
+        "read",
+        "write"
+      ],
+      "human_checkpoint": "topic_confirmation"
+    },
+    {
+      "step": 2,
+      "agent": "deep_researcher",
+      "input": "creative_brief",
+      "output": "research_pack",
+      "tools_allowed": [
+        "googleSearch",
+        "fetch"
+      ]
+    },
+    {
+      "step": 3,
+      "agent": "lead_writer",
+      "input": "creative_brief + research_pack",
+      "output": "draft_bundle",
+      "tools_allowed": [
+        "read",
+        "write",
+        "edit"
+      ],
+      "human_checkpoint": "draft_confirmation"
+    },
+    {
+      "step": 4,
+      "agent": "platform_adapter",
+      "input": "draft_bundle",
+      "output": "platform_adaptation",
+      "tools_allowed": [
+        "read",
+        "write",
+        "edit"
+      ]
+    },
+    {
+      "step": 5,
+      "agent": "quality_auditor",
+      "input": "draft_bundle + platform_adaptation",
+      "output": "audit_report",
+      "tools_allowed": [
+        "read",
+        "googleSearch"
+      ],
+      "human_checkpoint": "publish_confirmation"
+    },
+    {
+      "step": 6,
+      "agent": "illustrator",
+      "input": "publish_ready_package",
+      "output": "image_prompts",
+      "tools_allowed": [
+        "runSkill",
+        "read"
+      ]
+    }
+  ],
+  "gates": {
+    "audit_pass_rule": "total_score >= 70 && hard_veto_items.length == 0",
+    "max_revision_rounds": 2,
+    "on_revision_exceed": "escalate_to_human"
+  },
+  "artifacts": [
+    "wechat_article_markdown",
+    "xiaohongshu_note_markdown",
+    "xiaohongshu_short_300",
+    "title_matrix",
+    "cover_copy_sets",
+    "tag_sets",
+    "audit_report",
+    "image_prompts"
+  ]
+}

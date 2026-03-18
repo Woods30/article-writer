@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PlatformAdaptation",
+  "type": "object",
+  "required": [
+    "output",
+    "key_summary",
+    "next_agent_focus",
+    "pending_human_confirmations"
+  ],
+  "properties": {
+    "output": {
+      "type": "object",
+      "required": [
+        "xiaohongshu_titles",
+        "wechat_titles",
+        "cover_copy_sets",
+        "tags_precise",
+        "tags_broad",
+        "xiaohongshu_short_300"
+      ],
+      "properties": {
+        "xiaohongshu_titles": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "string"
+          }
+        },
+        "wechat_titles": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "string"
+          }
+        },
+        "cover_copy_sets": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "main_title",
+              "sub_title",
+              "visual_keywords"
+            ],
+            "properties": {
+              "main_title": {
+                "type": "string"
+              },
+              "sub_title": {
+                "type": "string"
+              },
+              "visual_keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "tags_precise": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 4,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags_broad": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "type": "string"
+          }
+        },
+        "xiaohongshu_note_markdown": {
+          "type": "string"
+        },
+        "xiaohongshu_short_300": {
+          "type": "string"
+        }
+      }
+    },
+    "key_summary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_agent_focus": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pending_human_confirmations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

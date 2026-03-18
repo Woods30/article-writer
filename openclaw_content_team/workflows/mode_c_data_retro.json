@@ -1,0 +1,33 @@
+{
+  "id": "mode_c_data_retro",
+  "name": "模式C-单篇或多篇数据复盘",
+  "description": "对已发布内容进行数据复盘，并回传下一轮选题方向。",
+  "entry_agent": "data_analyst",
+  "steps": [
+    {
+      "step": 1,
+      "agent": "data_analyst",
+      "input": "performance_data",
+      "output": "retrospective_report + insight_memo",
+      "tools_allowed": [
+        "read",
+        "searchApi"
+      ]
+    },
+    {
+      "step": 2,
+      "agent": "trend_insight_analyst",
+      "input": "insight_memo",
+      "output": "updated_topic_directions",
+      "tools_allowed": [
+        "googleSearch",
+        "fetch"
+      ]
+    }
+  ],
+  "artifacts": [
+    "retrospective_report",
+    "insight_memo",
+    "updated_topic_directions"
+  ]
+}

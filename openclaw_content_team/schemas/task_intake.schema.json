@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TaskIntake",
+  "type": "object",
+  "required": [
+    "user_request"
+  ],
+  "properties": {
+    "user_request": {
+      "type": "string"
+    },
+    "mode_hint": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "target_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "wechat",
+          "xiaohongshu",
+          "both"
+        ]
+      }
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "content"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
