@@ -1,0 +1,22 @@
+{
+  "id": "platform_adapter",
+  "name": "平台适配师",
+  "visibility": "internal",
+  "role": "按平台差异输出标题矩阵、封面文案、标签组合与小红书改写版",
+  "prompt_file": "prompts/platform_adapter.md",
+  "tools_allowed": [
+    "read",
+    "write",
+    "edit"
+  ],
+  "input_schema": "schemas/draft_bundle.schema.json",
+  "output_schema": "schemas/platform_adaptation.schema.json",
+  "supports_modes": [
+    "A",
+    "B",
+    "D"
+  ],
+  "handoff_to": [
+    "quality_auditor"
+  ]
+}

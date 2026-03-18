@@ -1,0 +1,59 @@
+{
+  "id": "workflow_router",
+  "default_mode": "B",
+  "routes": [
+    {
+      "mode": "A",
+      "name": "从研究报告启动",
+      "when_any_keyword": [
+        "研究报告",
+        "白皮书",
+        "原始素材",
+        "从报告出发"
+      ],
+      "required_inputs": [
+        "research_report"
+      ],
+      "workflow": "workflows/mode_a_report_start.json"
+    },
+    {
+      "mode": "B",
+      "name": "从零开始创作",
+      "when_any_keyword": [
+        "从选题开始",
+        "从零开始",
+        "完整创作",
+        "帮我写一篇"
+      ],
+      "workflow": "workflows/mode_b_zero_start.json"
+    },
+    {
+      "mode": "C",
+      "name": "发布数据复盘",
+      "when_any_keyword": [
+        "复盘",
+        "发布数据",
+        "数据分析",
+        "洞察备忘录"
+      ],
+      "required_inputs": [
+        "performance_data"
+      ],
+      "workflow": "workflows/mode_c_data_retro.json"
+    },
+    {
+      "mode": "D",
+      "name": "平台改写",
+      "when_any_keyword": [
+        "改成小红书",
+        "平台改写",
+        "改写",
+        "小红书版本"
+      ],
+      "required_inputs": [
+        "wechat_original_article"
+      ],
+      "workflow": "workflows/mode_d_platform_rewrite.json"
+    }
+  ]
+}

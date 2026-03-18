@@ -1,0 +1,21 @@
+{
+  "id": "topic_strategist",
+  "name": "选题策略师",
+  "visibility": "internal",
+  "role": "将研究资料或热点线索转化为可执行 Creative Brief",
+  "prompt_file": "prompts/topic_strategist.md",
+  "tools_allowed": [
+    "read",
+    "write"
+  ],
+  "input_schema": "schemas/topic_strategy_input.schema.json",
+  "output_schema": "schemas/creative_brief.schema.json",
+  "supports_modes": [
+    "A",
+    "B"
+  ],
+  "human_checkpoint": "topic_confirmation",
+  "handoff_to": [
+    "deep_researcher"
+  ]
+}

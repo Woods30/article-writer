@@ -1,0 +1,88 @@
+{
+  "id": "mode_b_zero_start",
+  "name": "模式B-从零开始标准流程",
+  "description": "没有现成材料，从趋势洞察开始完整创作链路。",
+  "entry_agent": "trend_insight_analyst",
+  "steps": [
+    {
+      "step": 1,
+      "agent": "trend_insight_analyst",
+      "input": "none",
+      "output": "topic_material_report",
+      "tools_allowed": [
+        "googleSearch",
+        "fetch"
+      ]
+    },
+    {
+      "step": 2,
+      "agent": "topic_strategist",
+      "input": "topic_material_report",
+      "output": "creative_brief",
+      "tools_allowed": [
+        "read",
+        "write"
+      ],
+      "human_checkpoint": "topic_confirmation"
+    },
+    {
+      "step": 3,
+      "agent": "deep_researcher",
+      "input": "creative_brief",
+      "output": "research_pack",
+      "tools_allowed": [
+        "googleSearch",
+        "fetch"
+      ]
+    },
+    {
+      "step": 4,
+      "agent": "lead_writer",
+      "input": "creative_brief + research_pack",
+      "output": "draft_bundle",
+      "tools_allowed": [
+        "read",
+        "write",
+        "edit"
+      ],
+      "human_checkpoint": "draft_confirmation"
+    },
+    {
+      "step": 5,
+      "agent": "platform_adapter",
+      "input": "draft_bundle",
+      "output": "platform_adaptation",
+      "tools_allowed": [
+        "read",
+        "write",
+        "edit"
+      ]
+    },
+    {
+      "step": 6,
+      "agent": "quality_auditor",
+      "input": "draft_bundle + platform_adaptation",
+      "output": "audit_report",
+      "tools_allowed": [
+        "read",
+        "googleSearch"
+      ],
+      "human_checkpoint": "publish_confirmation"
+    },
+    {
+      "step": 7,
+      "agent": "illustrator",
+      "input": "publish_ready_package",
+      "output": "image_prompts",
+      "tools_allowed": [
+        "runSkill",
+        "read"
+      ]
+    }
+  ],
+  "gates": {
+    "audit_pass_rule": "total_score >= 70 && hard_veto_items.length == 0",
+    "max_revision_rounds": 2,
+    "on_revision_exceed": "escalate_to_human"
+  }
+}

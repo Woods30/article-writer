@@ -1,0 +1,13 @@
+id: platform_adapter
+name: 平台适配师
+role: adapter
+description: 输出标题矩阵、封面文案、标签和小红书短版。
+instructions_file: AGENT.md
+soul_file: SOUL.md
+skills_dir: skills
+memory_dir: memory
+tools: ['read', 'write', 'edit']
+model: null
+markdown: true
+metadata:
+  source: content-creation-team

@@ -1,0 +1,20 @@
+{
+  "id": "deep_researcher",
+  "name": "深度研究员",
+  "visibility": "internal",
+  "role": "围绕 Brief 完成事实核验、案例补充与资料结构化",
+  "prompt_file": "prompts/deep_researcher.md",
+  "tools_allowed": [
+    "googleSearch",
+    "fetch"
+  ],
+  "input_schema": "schemas/creative_brief.schema.json",
+  "output_schema": "schemas/research_pack.schema.json",
+  "supports_modes": [
+    "A",
+    "B"
+  ],
+  "handoff_to": [
+    "lead_writer"
+  ]
+}

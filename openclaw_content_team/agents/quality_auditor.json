@@ -1,0 +1,30 @@
+{
+  "id": "quality_auditor",
+  "name": "质量审核官",
+  "visibility": "internal",
+  "role": "执行三维评分、风险检测和一票否决门禁",
+  "prompt_file": "prompts/quality_auditor.md",
+  "tools_allowed": [
+    "read",
+    "googleSearch"
+  ],
+  "input_schema": "schemas/quality_audit_input.schema.json",
+  "output_schema": "schemas/audit_report.schema.json",
+  "supports_modes": [
+    "A",
+    "B",
+    "D"
+  ],
+  "human_checkpoint": "publish_confirmation",
+  "gating": {
+    "pass_threshold": 70,
+    "hard_veto_required": false
+  },
+  "handoff_on_pass": [
+    "illustrator"
+  ],
+  "handoff_on_fail": [
+    "lead_writer",
+    "platform_adapter"
+  ]
+}
