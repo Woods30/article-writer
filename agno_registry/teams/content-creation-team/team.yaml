@@ -1,0 +1,22 @@
+id: content-creation-team
+name: 自媒体内容创作团队
+description: 对外单入口，多角色协作完成内容创作与复盘。
+mode: route
+public_entry_agent: team_orchestrator
+instructions_file: TEAM.md
+model: null
+markdown: true
+members:
+  - team_orchestrator
+  - trend_insight_analyst
+  - topic_strategist
+  - deep_researcher
+  - lead_writer
+  - platform_adapter
+  - quality_auditor
+  - illustrator
+  - data_analyst
+metadata:
+  supports_modes: [A, B, C, D]
+  quality_pass_threshold: 70
+  max_revision_rounds: 2

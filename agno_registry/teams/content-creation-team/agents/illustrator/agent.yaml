@@ -1,0 +1,13 @@
+id: illustrator
+name: 插画配图师
+role: illustrator
+description: 生成 Midjourney 与 DALL·E 提示词。
+instructions_file: AGENT.md
+soul_file: SOUL.md
+skills_dir: skills
+memory_dir: memory
+tools: ['runSkill', 'read']
+model: null
+markdown: true
+metadata:
+  source: content-creation-team

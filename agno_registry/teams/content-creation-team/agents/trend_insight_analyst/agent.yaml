@@ -1,0 +1,13 @@
+id: trend_insight_analyst
+name: 趋势洞察师
+role: researcher
+description: 扫描趋势并产出选题素材报告。
+instructions_file: AGENT.md
+soul_file: SOUL.md
+skills_dir: skills
+memory_dir: memory
+tools: ['googleSearch', 'fetch']
+model: null
+markdown: true
+metadata:
+  source: content-creation-team
