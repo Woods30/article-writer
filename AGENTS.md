@@ -4,36 +4,44 @@
 
 ### Overview
 
-This is an **Agno-based multi-agent content creation platform** (article-writer). It contains:
+This is a **LangGraph-based multi-agent content creation platform** (article-writer). It contains:
 
-- `agno_runtime/` — Python CLI that loads teams/agents from a YAML filesystem registry
-- `agno_registry/` — YAML team/agent definitions (currently one team: `content-creation-team` with 9 agents)
-- `openclaw_content_team/` — JSON-based legacy bundle (optional)
+- `langgraph_content_team/` — LangGraph implementation with 9 agent nodes, 4 workflow modes (A/B/C/D)
+- `agno_runtime/` + `agno_registry/` — Legacy Agno YAML-based runtime
+- `openclaw_content_team/` — Legacy OpenClaw JSON bundle
 
-### Running the application
-
-All commands are documented in `README.md`. Key commands:
+### Running the application (LangGraph)
 
 ```bash
-# Validate registry structure
-python3 -m agno_runtime --registry-root agno_registry validate
+# Validate graph compilation
+python3 -m langgraph_content_team validate
 
-# List teams / agents
-python3 -m agno_runtime --registry-root agno_registry list-teams
-python3 -m agno_runtime --registry-root agno_registry list-agents --team content-creation-team
+# Show graph nodes and edges
+python3 -m langgraph_content_team show-graph
 
-# Dry-run (no LLM call, no API key needed)
-python3 -m agno_runtime --registry-root agno_registry --model openai:gpt-4o-mini \
-  run-team --team content-creation-team --input "test" --dry-run
+# Dry-run (no LLM calls, no API key needed)
+python3 -m langgraph_content_team run --input "test" --dry-run
 
-# Validate the openclaw JSON bundle
-python3 openclaw_content_team/scripts/validate_bundle.py
+# Live run (requires OPENAI_API_KEY)
+python3 -m langgraph_content_team run --input "帮我创作一篇文章"
+
+# Mode D — shortest pipeline for quick testing
+python3 -m langgraph_content_team run --mode D \
+  --input "改写" --material wechat_original_article "原文内容"
 ```
+
+### Running the application (legacy Agno)
+
+See `README.md` for Agno runtime commands. Key commands:
+- `python3 -m agno_runtime --registry-root agno_registry validate`
+- `python3 -m agno_runtime --registry-root agno_registry list-teams`
 
 ### Non-obvious caveats
 
-- **No automated test suite exists.** Validation is done via `validate` CLI command and `validate_bundle.py`.
-- **No linter configuration** (no `pyproject.toml`, `setup.cfg`, `ruff.toml`, or `.flake8`). Code style checks are not enforced.
-- **Live execution** (without `--dry-run`) requires `OPENAI_API_KEY` env var. Without it, only dry-run and validation commands work.
-- **Missing tool implementations**: `googleSearch`, `fetch`, `runSkill`, `searchApi` tools referenced in agent manifests are not implemented in `agno_runtime/tools.py` (only `now_utc`, `read`, `write`, `edit` are built-in). Agents referencing missing tools will have those tools silently skipped at build time.
-- The `.cursor/environment.json` has been deleted from the repo so snapshot-managed environment settings take effect.
+- **No automated test suite.** Validation is done via `validate` CLI command and dry-run.
+- **No linter configuration.** Code style checks are not enforced.
+- **Live execution** requires `OPENAI_API_KEY`. Without it, only `validate`, `show-graph`, and `--dry-run` work.
+- **Mode D** (platform_adapter → quality_auditor → assemble) is the shortest pipeline — use it for quick end-to-end testing.
+- **Mode B** (full 7-step pipeline) is the most comprehensive but takes the longest to execute.
+- **Audit gate**: quality_auditor must score ≥ 70 with no hard-veto items. On failure, auto-revision loops up to 2 rounds before escalating.
+- The `.cursor/environment.json` has been deleted so snapshot-managed environment settings take effect.
