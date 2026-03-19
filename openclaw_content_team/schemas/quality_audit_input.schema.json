@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QualityAuditInput",
+  "type": "object",
+  "required": [
+    "draft_bundle",
+    "platform_adaptation"
+  ],
+  "properties": {
+    "draft_bundle": {
+      "type": "object"
+    },
+    "platform_adaptation": {
+      "type": "object"
+    }
+  }
+}

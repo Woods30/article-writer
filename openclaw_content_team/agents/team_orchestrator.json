@@ -1,0 +1,39 @@
+{
+  "id": "team_orchestrator",
+  "name": "团队协调者",
+  "visibility": "public",
+  "role": "任务拆解、流程调度、状态追踪、人工介入控制",
+  "prompt_file": "prompts/team_orchestrator.md",
+  "tools_allowed": [
+    "read",
+    "write",
+    "edit"
+  ],
+  "input_schema": "schemas/task_intake.schema.json",
+  "output_schema": "schemas/common_envelope.schema.json",
+  "subagents": [
+    "trend_insight_analyst",
+    "topic_strategist",
+    "deep_researcher",
+    "lead_writer",
+    "platform_adapter",
+    "quality_auditor",
+    "illustrator",
+    "data_analyst"
+  ],
+  "supports_modes": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "handoff_policy": {
+    "max_revision_rounds": 2,
+    "escalate_on_exceed": true,
+    "require_human_checkpoints": [
+      "topic_confirmation",
+      "draft_confirmation",
+      "publish_confirmation"
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "team_id": "content-creation-team",
+  "name": "自媒体内容创作团队",
+  "version": "1.0.0",
+  "description": "对外暴露单一 Agent（团队协调者），内部通过多个 SubAgent 完成选题、研究、撰稿、平台适配、审核、配图和复盘。",
+  "public_agent_id": "team_orchestrator",
+  "supported_modes": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "agents": [
+    "team_orchestrator",
+    "trend_insight_analyst",
+    "topic_strategist",
+    "deep_researcher",
+    "lead_writer",
+    "platform_adapter",
+    "quality_auditor",
+    "illustrator",
+    "data_analyst"
+  ],
+  "workflow_router": "workflows/router.json",
+  "context_contract": "workflows/context_contract.json",
+  "workflows": [
+    "workflows/mode_a_report_start.json",
+    "workflows/mode_b_zero_start.json",
+    "workflows/mode_c_data_retro.json",
+    "workflows/mode_d_platform_rewrite.json"
+  ],
+  "defaults": {
+    "language": "zh-CN",
+    "quality_pass_threshold": 70,
+    "hard_veto_enabled": true,
+    "max_revision_rounds": 2
+  },
+  "human_checkpoints": [
+    {
+      "id": "topic_confirmation",
+      "label": "选题确认",
+      "owner_agent": "topic_strategist"
+    },
+    {
+      "id": "draft_confirmation",
+      "label": "初稿确认",
+      "owner_agent": "lead_writer"
+    },
+    {
+      "id": "publish_confirmation",
+      "label": "发布确认",
+      "owner_agent": "quality_auditor"
+    }
+  ],
+  "state_template": "templates/task_status.md"
+}

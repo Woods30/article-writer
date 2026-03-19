@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AuditReport",
+  "type": "object",
+  "required": [
+    "output",
+    "key_summary",
+    "next_agent_focus",
+    "pending_human_confirmations"
+  ],
+  "properties": {
+    "output": {
+      "type": "object",
+      "required": [
+        "score_content_value",
+        "score_distribution",
+        "score_compliance",
+        "total_score",
+        "hard_veto_items",
+        "decision",
+        "revision_items"
+      ],
+      "properties": {
+        "score_content_value": {
+          "type": "number"
+        },
+        "score_distribution": {
+          "type": "number"
+        },
+        "score_compliance": {
+          "type": "number"
+        },
+        "total_score": {
+          "type": "number"
+        },
+        "hard_veto_items": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "revision_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "owner_agent",
+              "issue",
+              "action"
+            ],
+            "properties": {
+              "owner_agent": {
+                "type": "string"
+              },
+              "issue": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "key_summary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_agent_focus": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pending_human_confirmations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

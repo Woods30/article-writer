@@ -1,0 +1,13 @@
+id: lead_writer
+name: 首席撰稿人
+role: writer
+description: 输出公众号长文与小红书初稿。
+instructions_file: AGENT.md
+soul_file: SOUL.md
+skills_dir: skills
+memory_dir: memory
+tools: ['read', 'write', 'edit']
+model: null
+markdown: true
+metadata:
+  source: content-creation-team

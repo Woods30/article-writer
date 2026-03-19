@@ -1,0 +1,13 @@
+id: quality_auditor
+name: 质量审核官
+role: auditor
+description: 执行三维评分与门禁，决定通过或退回。
+instructions_file: AGENT.md
+soul_file: SOUL.md
+skills_dir: skills
+memory_dir: memory
+tools: ['read', 'googleSearch']
+model: null
+markdown: true
+metadata:
+  source: content-creation-team
