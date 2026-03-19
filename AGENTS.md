@@ -41,7 +41,8 @@ See `README.md` for Agno runtime commands. Key commands:
 - **No automated test suite.** Validation is done via `validate` CLI command and dry-run.
 - **No linter configuration.** Code style checks are not enforced.
 - **Live execution** requires `OPENAI_API_KEY`. Without it, only `validate`, `show-graph`, and `--dry-run` work.
-- **Mode D** (platform_adapter → quality_auditor → assemble) is the shortest pipeline — use it for quick end-to-end testing.
-- **Mode B** (full 7-step pipeline) is the most comprehensive but takes the longest to execute.
+- **Mode D** (platform_adapter → quality_auditor → assemble) is the shortest pipeline — use it for quick end-to-end testing (~20s).
+- **Mode B** (full 7-step pipeline) is the most comprehensive and takes ~60–90s per run with `gpt-4o-mini`.
 - **Audit gate**: quality_auditor must score ≥ 70 with no hard-veto items. On failure, auto-revision loops up to 2 rounds before escalating.
 - The `.cursor/environment.json` has been deleted so snapshot-managed environment settings take effect.
+- **Graph compilation** is fast (~0.7s) and does not require an API key — use `validate` or `show-graph` for quick sanity checks after code changes.
